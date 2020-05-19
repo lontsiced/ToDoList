@@ -1,0 +1,29 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/taches']"><mat-icon>list</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{tache.titre}}</h2></mat-card-title>
+        <mat-card-subtitle>{{tache.description}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <dl>
+          <dt>Titre:</dt>
+          <dd>{{tache.titre}}</dd>
+          <dt>date execution:</dt>
+          <dd>{{tache.dateExecution | date : 'dd/MM/yyyy'}}</dd>
+          <dt>Description:</dt>
+          <dd>{{tache.description}}</dd>
+        </dl>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-flat-button color="primary" [routerLink]="['/tache-edit', tache.id]"><mat-icon>edit</mat-icon></a>
+        <a mat-flat-button color="warn" (click)="deleteTache(tache.id)"><mat-icon>delete</mat-icon></a>
+      </mat-card-actions>
+    </mat-card>
+  </div>

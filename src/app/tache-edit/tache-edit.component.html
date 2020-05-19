@@ -1,0 +1,37 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" (click)="tacheDetails()"><mat-icon>info</mat-icon></a>
+    </div>
+    <mat-card class="example-card">
+      <form [formGroup]="tacheForm" (ngSubmit)="onFormSubmit()">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Titre" formControlName="titre"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!tacheForm.get('titre').valid && tacheForm.get('titre').touched">Entrez un titre</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Date d'execution" formControlName="dateExecution"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!tacheForm.get('dateExecution').valid && tacheForm.get('dateExecution').touched">Entrez une date execution</span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Description" formControlName="description"
+                 [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!tacheForm.get('description').valid && tacheForm.get('description').touched">Entrez une Description</span>
+          </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button type="submit" [disabled]="!tacheForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
